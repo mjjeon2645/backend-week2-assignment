@@ -6,33 +6,32 @@ public class OnaDiet {
         // 입력 준비
         Scanner scanner = new Scanner(System.in);
 
-        // 운동종류 입력받기
-        System.out.print("운동 종류: ");
-        String training = scanner.nextLine();
+        // 입력 받기
+        System.out.print("신장(cm): ");
+        double height = scanner.nextDouble();
 
-        // 체중 입력받기
         System.out.print("체중(kg): ");
-        int weight = scanner.nextInt();
+        double weight = scanner.nextDouble();
 
-        // 운동시간 입력받기
-        System.out.print("운동 시간(분): ");
-        int time = scanner.nextInt();
+        // BMI 계산과 출력
+        double result = weight / (0.0001 * height * height);
+        String low = "저체중";
+        String normal = "정상";
+        String high = "과체중";
+        String fat = "비만";
 
-        // 칼로리 소모량 계산하여 출력하기
-        // 소모량 = 운동계수 * 체중
+        if (result <= 18.5)
+            System.out.println("비만도 결과: " + low);
 
-        double cycle = weight * time * 2.3 / 15;
-        double walking = weight * time * 0.9 / 15;
-        double running = weight * time * 2 / 15;
+        if (result > 18.5 && result <= 23)
+            System.out.println("비만도 결과: " + normal);
 
-        if("자전거".equals(training))
-            System.out.println("칼로리 소모: " + cycle + "kcal");
+        if (result > 23 && result <= 25)
+            System.out.println("비만도 결과: " + high);
 
-        if("걷기".equals(training))
-            System.out.println("칼로리 소모: " + walking + "kcal");
+        if (result > 25)
+            System.out.println("비만도 결과: " + fat);
 
-        if("달리기".equals(training))
-            System.out.println("칼로리 소모: " + running + "kcal");           // 질문. 여기는 왜 소숫점이 예시처럼 안나올까?
-
+        System.out.println("BMI: " + result);
     }
 }
